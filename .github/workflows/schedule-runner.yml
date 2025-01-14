@@ -23,7 +23,7 @@ jobs:
         with:
           server_address: smtp.gmail.com # Replace with your SMTP server
           server_port: 587
-          username: test.umr007@gmail.com # Replace with sender's email
+          username: lifeumr@gmail.com # Replace with sender's email
           password: ${{ secrets.SMTP_PASSWORD }} # Use GitHub Secrets for secure credentials
           subject: "AHIMMS90 Website not found on given URL"
           body: |
@@ -35,6 +35,6 @@ jobs:
             - Commit: ${{ github.sha }}
             - Commit Message: ${{ github.event.head_commit.message }}
 
-          from: test.umr007@gmail.com  # Replace with sender email(s)
+          from: lifeumr@gmail.com  # Replace with sender email(s)
           to: akibayon.cse@gmail.com # Replace with recipient email(s)
 
