@@ -3,7 +3,7 @@ describe("Test the URL Stability",()=>{
     it('Check the url is run open smoothly',()=>{
 
         cy.clearAllCookies;
-        cy.visit('http://ahimms9.com/');
+        cy.visit('http://ahimms90.com/');
         cy.wait(1000);
 
         // cy.xpath("//h3[normalize-space()='AHIMMS90']").should('not.be.visible');
