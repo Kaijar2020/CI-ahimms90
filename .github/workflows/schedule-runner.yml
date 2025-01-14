@@ -36,5 +36,5 @@ jobs:
             - Commit Message: ${{ github.event.head_commit.message }}
 
           from: lifeumr@gmail.com  # Replace with sender email(s)
-          to: akibayon.cse@gmail.com # Replace with recipient email(s)
+          to: srana@ael-bd.com # Replace with recipient email(s)
 
