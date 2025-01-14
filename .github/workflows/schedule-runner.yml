@@ -1,12 +1,39 @@
-name: Regression End-to-end tests
-on: push
+name: Regression End-to-End Tests
+
+on: 
+  push
+
 jobs:
   cypress-run:
     runs-on: ubuntu-22.04
     steps: 
       - name: Checkout
         uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
+
+      # Install npm dependencies, cache them correctly, and run Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
+        id: cypress
+        continue-on-error: true # Allow the job to continue even if Cypress fails
+
+      # Conditional email notification
+      - name: Send email if Cypress fails or skips
+        if: failure() || steps.cypress.outcome == 'failure'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com # Replace with your SMTP server
+          server_port: 587
+          username: test.umr007@gmail.com # Replace with sender's email
+          password: ${{ secrets.SMTP_PASSWORD }} # Use GitHub Secrets for secure credentials
+          subject: "AHIMMS90 Website not found on given URL"
+          body: |
+            The Cypress tests for the push to branch ${{ github.ref_name }} have failed or been skipped.
+
+            Details:
+            - Repository: ${{ github.repository }}
+            - Branch: ${{ github.ref_name }}
+            - Commit: ${{ github.sha }}
+            - Commit Message: ${{ github.event.head_commit.message }}
+
+          to: akibayon.cse@gmail.com # Replace with recipient email(s)
+
