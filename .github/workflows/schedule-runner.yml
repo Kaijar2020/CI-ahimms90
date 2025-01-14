@@ -35,6 +35,6 @@ jobs:
             - Commit: ${{ github.sha }}
             - Commit Message: ${{ github.event.head_commit.message }}
 
-          from: test.umr007@gmail.com
+          from: test.umr007@gmail.com  # Replace with sender email(s)
           to: akibayon.cse@gmail.com # Replace with recipient email(s)
 
