@@ -1,7 +1,8 @@
 name: Regression End-to-End Tests
 
 on: 
-  push
+  schedule:
+    - cron: '02 21 * * *'
 
 jobs:
   cypress-run:
